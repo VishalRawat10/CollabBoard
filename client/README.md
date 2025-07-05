@@ -37,3 +37,7 @@ VITE_SERVER_URL=<backend url>
 ### 4. Start the App
 
 npm run dev
+
+### 5. Deployed Link
+
+https://collabboardvishal.onrender.com
