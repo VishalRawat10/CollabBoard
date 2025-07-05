@@ -27,6 +27,7 @@ export default function Board({ board, tasks, setTasks }) {
       const jsonRes = await res.json();
       console.log(jsonRes);
       setTasks([...tasks, jsonRes.task]);
+      alert("Task Added!");
     } catch (err) {
       console.error(err);
       alert(err.message || "Failed to add task.");
@@ -52,6 +53,7 @@ export default function Board({ board, tasks, setTasks }) {
         return jsonRes.task._id === task._id ? jsonRes.task : task;
       });
       setTasks(updatedTasks);
+      alert("Task Updated!");
     } catch (err) {
       console.log(err);
       alert(err.message || "Unable to update!");
@@ -73,6 +75,7 @@ export default function Board({ board, tasks, setTasks }) {
         return jsonRes.task._id !== task._id;
       });
       setTasks(updatedTasks);
+      alert("Task deleted!");
     } catch (err) {
       console.log(err);
       alert(err.message || "Unable to delete!");

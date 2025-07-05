@@ -48,6 +48,7 @@ export default function Home() {
       });
       const jsonRes = await res.json();
       setBoards([...boards, jsonRes.board]);
+      alert("Board Added!");
     } catch (err) {
       console.log(err);
       alert(err.message || "Couldn't add board!");
