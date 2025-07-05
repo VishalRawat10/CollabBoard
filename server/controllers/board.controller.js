@@ -45,9 +45,9 @@ module.exports.getTasks = async (req, res) => {
 module.exports.createTask = async (req, res) => {
     const { boardId } = req.params;
     if (!boardId) return res.status(400).json({ message: "BoardId not given." });
-
+    console.log(req.body);
     const { title, description, assignedTo, dueDate, priority, status } = req.body;
-    if (!title || !description || !dueDate || !status) {
+    if (!title || !description || !dueDate) {
         return res.status(400).json({ message: "Incomplete task data!" });
     }
     try {

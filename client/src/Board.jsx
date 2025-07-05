@@ -52,6 +52,7 @@ export default function Board({ board, tasks, setTasks }) {
       const updatedTasks = tasks.map((task) => {
         return jsonRes.task._id === task._id ? jsonRes.task : task;
       });
+      console.log(updatedTasks);
       setTasks(updatedTasks);
       alert("Task Updated!");
     } catch (err) {

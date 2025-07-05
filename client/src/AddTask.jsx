@@ -18,8 +18,8 @@ export default function AddTask({ onAddTask }) {
       title: "",
       assignedTo: "",
       dueDate: "",
-      status: "",
-      priority: "",
+      status: "To Do",
+      priority: "Low",
     });
   };
 
@@ -94,10 +94,13 @@ export default function AddTask({ onAddTask }) {
         <label htmlFor="status" className="font-semibold">
           Status*
         </label>
-        <select name="status" id="status" onChange={handleInputChange}>
-          <option value={"To Do"} selected>
-            To Do
-          </option>
+        <select
+          name="status"
+          id="status"
+          value={task.status}
+          onChange={handleInputChange}
+        >
+          <option value={"To Do"}>To Do</option>
           <option value={"In Progress"}>In Progress</option>
           <option value={"Done"}>Done</option>
         </select>
@@ -106,10 +109,13 @@ export default function AddTask({ onAddTask }) {
         <label htmlFor="priority" className="font-semibold">
           Priority
         </label>
-        <select name="priority" id="priority" onChange={handleInputChange}>
-          <option value={"Low"} selected>
-            Low
-          </option>
+        <select
+          name="priority"
+          id="priority"
+          value={task.priority}
+          onChange={handleInputChange}
+        >
+          <option value={"Low"}>Low</option>
           <option value={"Medium"}>Medium</option>
           <option value={"High"}>High</option>
         </select>
