@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <div className="bg-[#e9ecef] h-screen flex relative">
       {isLoading ? (
-        <div className="absolute top-0 w-screen h-screen flex bg-black/30 z-50 justify-center pt-30">
+        <div className="absolute top-0 w-screen h-screen flex text-3xl bg-black/30 z-50 justify-center pt-30">
           Loading...
         </div>
       ) : (
