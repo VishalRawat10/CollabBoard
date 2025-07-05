@@ -5,13 +5,14 @@ import { useState } from "react";
 import EditTask from "./EditTask";
 import AddTask from "./AddTask";
 
-export default function Board({ board, tasks, setTasks }) {
+export default function Board({ board, tasks, setTasks, setIsLoading }) {
   const [filter, setFilter] = useState("All");
   const [editTask, setEditTask] = useState();
   const [addTask, setAddTask] = useState(false);
 
   // Add Task
   const onAddTask = async (task) => {
+    setIsLoading(true);
     try {
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/boards/${board._id}/tasks`,
@@ -32,10 +33,12 @@ export default function Board({ board, tasks, setTasks }) {
       console.error(err);
       alert(err.message || "Failed to add task.");
     }
+    setIsLoading(false);
   };
 
   // Update Task
   const onTaskUpdate = async (taskDetails) => {
+    setIsLoading(true);
     try {
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/tasks/${taskDetails._id}`,
@@ -48,21 +51,21 @@ export default function Board({ board, tasks, setTasks }) {
         }
       );
       const jsonRes = await res.json();
-      console.log(jsonRes);
       const updatedTasks = tasks.map((task) => {
         return jsonRes.task._id === task._id ? jsonRes.task : task;
       });
-      console.log(updatedTasks);
       setTasks(updatedTasks);
       alert("Task Updated!");
     } catch (err) {
       console.log(err);
       alert(err.message || "Unable to update!");
     }
+    setIsLoading(false);
   };
 
   // Delete TAsk
   const deleteTask = async (task) => {
+    setIsLoading(true);
     try {
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/tasks/${task._id}`,
@@ -71,7 +74,6 @@ export default function Board({ board, tasks, setTasks }) {
         }
       );
       const jsonRes = await res.json();
-      console.log(jsonRes);
       const updatedTasks = tasks.filter((task) => {
         return jsonRes.task._id !== task._id;
       });
@@ -81,6 +83,7 @@ export default function Board({ board, tasks, setTasks }) {
       console.log(err);
       alert(err.message || "Unable to delete!");
     }
+    setIsLoading(false);
   };
 
   return (
