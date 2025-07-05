@@ -6,8 +6,8 @@ export default function AddTask({ onAddTask }) {
     title: "",
     assignedTo: "",
     dueDate: "",
-    status: "",
-    priority: "",
+    status: "To Do",
+    priority: "Low",
   });
 
   const handleSubmit = (e) => {
