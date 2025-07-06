@@ -12,7 +12,7 @@ module.exports.editTask = async (req, res) => {
         return res.status(400).json({ message: "Incomplete task information." });
     }
     try {
-        const task = await Task.findByIdAndUpdate(taskId, { title, description, assignedTo, status, priority, dueDate });
+        const task = await Task.findByIdAndUpdate(taskId, { title, description, assignedTo, status, priority, dueDate }, { new: true });
         return res.status(200).json({ message: "task updated successfully", task });
 
     } catch (err) {
